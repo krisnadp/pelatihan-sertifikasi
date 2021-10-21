@@ -21,7 +21,7 @@
 								ORDER BY idanggota"
 								);
 								while($r_tampil_anggota=mysqli_fetch_array($q_tampil_anggota)){
-									echo"<option value='$r_tampil_anggota[idanggota]'>$r_tampil_anggota[idanggota] | $r_tampil_anggota[nama]</option>";
+									echo"<option value=$r_tampil_anggota[idanggota]>$r_tampil_anggota[idanggota] | $r_tampil_anggota[nama]</option>";
 								}
 							?>
 						</select>
@@ -39,7 +39,7 @@
 								ORDER BY idbuku"
 								);
 								while($r_tampil_buku=mysqli_fetch_array($q_tampil_buku)){
-									echo"<option value='$r_tampil_buku[idbuku]'>$r_tampil_buku[idbuku] | $r_tampil_buku[judulbuku]</option>";
+									echo"<option value=$r_tampil_buku[idbuku]>$r_tampil_buku[idbuku] | $r_tampil_buku[judulbuku]</option>";
 								}
 							?>
 						</select>
