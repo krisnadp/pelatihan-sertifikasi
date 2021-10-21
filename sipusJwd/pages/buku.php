@@ -1,36 +1,47 @@
-<div id="label-page"><h3>Tampil Data Buku</h3></div>
-<div id="content">
-	<p id="tombol-tambah-container"><a href="index.php?p=buku-input" class="tombol">Tambah Data Buku</a></p>
-	<table id="tabel-tampil">
-		<tr>
-			<th id="label-tampil-no">No</td>
-			<th>ID Buku</th>
-			<th>Judul Buku</th>
-			<th>Kategori</th>
-			<th>Pengarang</th>
-			<th>Penerbit</th>
-			<th id="label-opsi2">Opsi</th>
-		</tr>
-		<?php
+<div class="container">
+	<div class="container">
+		<h2 class="px-5 pb-4 fw-bold">Tampil Data Buku</h2>
+		<a class="ms-5 btn btn-primary"  href="index.php?p=buku-input">Tambah Buku</a>
+		<div class="container-fluid px-5">
+			<table class="table table-striped ">
+				<thead>
+					<tr>
+						<th scope="col">No</th>
+						<th scope="col">ID Buku</th>
+						<th scope="col">Judul Buku</th>
+						<th scope="col">Kategori</th>
+						<th scope="col">Pengarang</th>
+						<th scope="col">Penerbit</th>
+						<th scope="col">Opsi</th>
+					</tr>
+				</thead>
+				<tbody>
 
-		$sql="SELECT * FROM tbbuku ORDER BY idbuku DESC";
-		$q_tampil_buku = mysqli_query($db, $sql);
+					<?php
+						$sql="SELECT * FROM tbbuku ORDER BY idbuku DESC";
+						$q_tampil_buku = mysqli_query($db, $sql);
+				
+						$nomor=1;
+						while($r_tampil_buku=mysqli_fetch_array($q_tampil_buku)){
+					?>
 
-		$nomor=1;
-		while($r_tampil_buku=mysqli_fetch_array($q_tampil_buku)){
-		?>
-		<tr>
-			<td><?php echo $nomor++; ?></td>
-			<td><?php echo $r_tampil_buku['idbuku']; ?></td>
-			<td><?php echo $r_tampil_buku['judulbuku']; ?></td>
-			<td><?php echo $r_tampil_buku['kategori']; ?></td>
-			<td><?php echo $r_tampil_buku['pengarang']; ?></td>
-			<td><?php echo $r_tampil_buku['penerbit']; ?></td>
-			<td>
-				<div class="tombol-opsi-container"><a href="index.php?p=buku-edit&id=<?php echo $r_tampil_buku['idbuku'];?>" class="tombol">Edit</a></div>
-				<div class="tombol-opsi-container"><a href="proses/buku-hapus.php?id=<?php echo $r_tampil_buku['idbuku']; ?>" class="tombol">Hapus</a></div>
-			</td>
-		</tr>
-		<?php } ?>
-	</table>
+					<tr>
+						<td><?= $nomor++; ?></td>
+						<td><?= $r_tampil_buku['idbuku']; ?></td>
+						<td><?= $r_tampil_buku['judulbuku']; ?></td>
+						<td><?= $r_tampil_buku['kategori']; ?></td>
+						<td><?= $r_tampil_buku['pengarang']; ?></td>
+						<td><?= $r_tampil_buku['penerbit']; ?></td>
+						<td>
+							<a class="btn btn-warning" href="index.php?p=buku-edit&id=<?php echo $r_tampil_buku['idbuku'];?>">Ubah</a>
+							<a class="btn btn-danger" href="proses/buku-hapus.php?id=<?php echo $r_tampil_buku['idbuku']; ?>">Hapus</a>
+						</td>
+					</tr>
+
+					<?php } ?>
+
+				</tbody>
+			</table>
+		</div>
+	</div>
 </div>
