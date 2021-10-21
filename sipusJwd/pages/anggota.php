@@ -17,23 +17,42 @@
 				<tbody>
 
 					<?php
-						$sql = "SELECT * FROM tbanggota ORDER BY idanggota DESC";
-						$q_tampil_anggota = mysqli_query($db, $sql);
-						$nomor = 1;
-						while ($r_tampil_anggota = mysqli_fetch_array($q_tampil_anggota)) {
+					$sql = "SELECT * FROM tbanggota ORDER BY idanggota DESC";
+					$q_tampil_anggota = mysqli_query($db, $sql);
+					$nomor = 1;
+					while ($r_tampil_anggota = mysqli_fetch_array($q_tampil_anggota)) {
 					?>
 
-					<tr>
-						<td><?= $nomor++; ?></td>
-						<td><?= $r_tampil_anggota['idanggota']; ?></td>
-						<td><?= $r_tampil_anggota['nama']; ?></td>
-						<td><?= $r_tampil_anggota['jeniskelamin']; ?></td>
-						<td><?= $r_tampil_anggota['alamat']; ?></td>
-						<td>
-							<a class="btn btn-warning" href="index.php?p=anggota-edit&id=<?php echo $r_tampil_anggota['idanggota']; ?>">Ubah</a>
-							<a class="btn btn-danger" href="proses/anggota-hapus.php?id=<?php echo $r_tampil_anggota['idanggota']; ?>">Hapus</a>
-						</td>
-					</tr>
+						<tr>
+							<td><?= $nomor++; ?></td>
+							<td><?= $r_tampil_anggota['idanggota']; ?></td>
+							<td><?= $r_tampil_anggota['nama']; ?></td>
+							<td><?= $r_tampil_anggota['jeniskelamin']; ?></td>
+							<td><?= $r_tampil_anggota['alamat']; ?></td>
+							<td>
+								<a class="btn btn-warning" href="index.php?p=anggota-edit&id=<?php echo $r_tampil_anggota['idanggota']; ?>">Ubah</a>
+								<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Hapus</button>
+							</td>
+						</tr>
+
+						<!-- Modal -->
+						<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="exampleModalLabel">Konfirmasi Hapus</h5>
+										<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+									</div>
+									<div class="modal-body">
+										<p>Apakah anda yakin ingin menghapus data?</p>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+										<a class="btn btn-danger" href="proses/anggota-hapus.php?id=<?php echo $r_tampil_anggota['idanggota']; ?>">Hapus</a>
+									</div>
+								</div>
+							</div>
+						</div>
 
 					<?php } ?>
 

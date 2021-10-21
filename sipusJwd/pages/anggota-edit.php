@@ -8,7 +8,7 @@
 	<div class="container">
 		<h2 class="px-5 pb-4 fw-bold">Edit Data Anggota</h2>
 		<div class="container-fluid px-5">
-			<form action="proses/anggota-input-proses.php" method="post">
+			<form action="proses/anggota-edit-proses.php" method="post">
 				<div class="mb-3 row">
 					<label for="inputIdAnggota" class="col-sm-2 col-form-label">ID Anggota</label>
 					<div class="col-sm-9">
