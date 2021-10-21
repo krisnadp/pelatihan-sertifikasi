@@ -6,7 +6,7 @@
 
 <div class="container">
 	<div class="container">
-		<h2 class="px-5 pb-4 fw-bold">Input Data Anggota</h2>
+		<h2 class="px-5 pb-4 fw-bold">Edit Data Anggota</h2>
 		<div class="container-fluid px-5">
 			<form action="proses/anggota-input-proses.php" method="post">
 				<div class="mb-3 row">
@@ -25,9 +25,9 @@
 					<label class="col-sm-2 col-form-label">Jenis Kelamin</label>
 					<div class="col-sm-9">
 						<select class="form-select" name="jenis_kelamin" required>
-							<option selected>Pilih Jenis Kelamin</option>
-							<option value="Pria" >Pria</option>
-							<option value="Wanita" >Wanita</option>
+							<option <?php if( $r_tampil_anggota['jeniskelamin'] !== "Pria" || "Wanita") echo 'selected';?> >Pilih Jenis Kelamin</option>
+							<option value="Pria" <?php if( $r_tampil_anggota['jeniskelamin']=="Pria") echo 'selected';?> >Pria</option>
+							<option value="Wanita" <?php if( $r_tampil_anggota['jeniskelamin']=="Wanita") echo 'selected';?> >Wanita</option>
 						</select>
 					</div>
 				</div>
